@@ -54,20 +54,24 @@ export default class StoreInfo extends Component {
           })
         }
         {
-          this.state.more ? (
-            <TouchableHighlight underlayColor="#fff" style={styles.btnSkuMore} onPress={() => this.skuMore(this.state.skuList.length)}>
-              <View style={{flexDirection:'row'}}>
-                <Text style={styles.txtSkuMore}>查看更多{this.state.skuList.length - 3}件商品</Text>
-                <View style={styles.arrowDown}></View>
-              </View>
-            </TouchableHighlight>
+          this.state.skuList.length > 3 ?  (
+            this.state.more ? (
+              <TouchableHighlight underlayColor="#fff" style={styles.btnSkuMore} onPress={() => this.skuMore(this.state.skuList.length)}>
+                <View style={{flexDirection:'row'}}>
+                  <Text style={styles.txtSkuMore}>查看更多{this.state.skuList.length - 3}件商品</Text>
+                  <View style={styles.arrowDown}></View>
+                </View>
+              </TouchableHighlight>
+            ) : (
+              <TouchableHighlight underlayColor="#fff" style={styles.btnSkuMore} onPress={() => this.skuMore()}>
+                <View style={{flexDirection:'row'}}>
+                  <Text style={styles.txtSkuMore}>收起</Text>
+                  <View style={styles.arrowUp}></View>
+                </View>
+              </TouchableHighlight>
+            )
           ) : (
-            <TouchableHighlight underlayColor="#fff" style={styles.btnSkuMore} onPress={() => this.skuMore()}>
-              <View style={{flexDirection:'row'}}>
-                <Text style={styles.txtSkuMore}>收起</Text>
-                <View style={styles.arrowUp}></View>
-              </View>
-            </TouchableHighlight>
+            null
           )
         }
       </View>
