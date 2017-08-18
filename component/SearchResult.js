@@ -21,7 +21,6 @@ import {
 import {getSearchResult} from '../component/ApiUtli'
 import Loading from '../component/Loading'
 import Dimensions from 'Dimensions'
-import {SearchResultList} from '../component/AjaxData'
 
 import SearchBar from '../component/SearchBar'
 import StoreInfo from '../component/StoreInfo'
@@ -34,9 +33,27 @@ export default class SearchResult extends Component {
     this.state = {
       keyWords: '',
       dataSource:new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),
-      SearchResultList:SearchResultList,
+      SearchResultList:[],
       loaded:false,
     };
+  }
+  componentDidMount () {
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            console.log(position);
+
+            let longitude = JSON.stringify(position.coords.longitude);//精度
+            let latitude = JSON.stringify(position.coords.latitude);//纬度
+            console.log("123 "+longitude);
+            console.log(latitude);
+
+            // this.fetchData(longitude,latitude);
+        },
+        (error) =>{
+            console.log(error);
+        },
+        {enableHighAccuracy: true, timeout: 5000, maximumAge: 1000}
+    );
   }
   componentWillMount () {
     this.fetchData()

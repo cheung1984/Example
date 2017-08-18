@@ -35,8 +35,10 @@ export default class SearchBar extends Component {
     if (this.state.isSearchIndex == 'true') {
       return (
         <View style={styles.searchContainer}>
+          <View style={styles.arrowLeft}></View>
           <View style={styles.inputWrap}>
             <TextInput
+              autoFocus={true}
               style={styles.input}
               placeholder={this.state.placeholder}
               onChangeText={(keyWords) => this.setState({keyWords})}
@@ -82,6 +84,18 @@ const styles = StyleSheet.create({
     borderBottomWidth:1,
     borderBottomColor: '#ebebeb',
     flexDirection:'row'
+  },
+  arrowLeft: {
+    position:'absolute',
+    top:15,
+    left:10,
+    width:12,
+    height:12,
+    borderLeftWidth:2,
+    borderBottomWidth:2,
+    borderBottomColor:'#848484',
+    borderLeftColor:'#848484',
+    transform:[{rotate:'45deg'}]
   },
   inputWrap: {
     borderWidth:1,

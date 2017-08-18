@@ -4,9 +4,10 @@ import qs from 'querystring'
 var instance = axios.create({
     headers:{
       'Content-Type':'application/x-www-form-urlencoded',
-      // 'Accept':'application/json, text/javascript, */*'
     }
 });
+// axios.defaults.headers['content-Type'] = 'appliction/x-www-form-urlencoded';
+
 
 let REQUEST_URL = 'https://gw-o2o.jd.com/client';
 let hotWordsParam = {

@@ -11,5 +11,4 @@ import {
 import Search from './component/Search'
 import SearchResult from './component/SearchResult'
 
-
 AppRegistry.registerComponent('Example', () => SearchResult);
